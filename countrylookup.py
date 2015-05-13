@@ -1,7 +1,11 @@
-import ipgetter
-import geoip2
+import ipgetter, pygeoip
 
-ip = ipgetter.myip()
-country = geoip2.country(ip)
-print(country)
- 
+def getCountry():
+	ip = ipgetter.myip()
+	print(ip)
+	gi = pygeoip.GeoIP('GeoIP.dat')
+	country = gi.country_name_by_addr(ip)
+	print(country)
+
+
+getCountry()
